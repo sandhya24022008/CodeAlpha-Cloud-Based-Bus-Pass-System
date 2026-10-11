@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Bus Pass</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef3f8;
+            padding: 20px;
+        }
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 11px;
+            margin: 8px 0 14px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #1769aa;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .message {
+            color: #b00020;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Bus Pass Application</h2>
+
+        {% with messages = get_flashed_messages() %}
+            {% for message in messages %}
+                <p class="message">{{ message }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('apply') }}">
+            <label>Full Name</label>
+            <input type="text" name="name" maxlength="100" required>
+
+            <label>Age</label>
+            <input type="number" name="age" min="1" max="120" required>
+
+            <label>Phone Number</label>
+            <input type="tel" name="phone"
+                   pattern="[0-9]{10}"
+                   minlength="10" maxlength="10" required>
+
+            <label>Bus Route</label>
+            <input type="text" name="route"
+                   placeholder="e.g. Coimbatore to Pollachi"
+                   maxlength="100" required>
+
+            <label>Pass Type</label>
+            <select name="pass_type" required>
+                <option value="">Select Pass Type</option>
+                <option value="Daily">Daily</option>
+                <option value="Monthly">Monthly</option>
+                <option value="Student">Student</option>
+            </select>
+
+            <button type="submit">Submit Application</button>
+        </form>
+
+        <p><a href="{{ url_for('home') }}">Back to Home</a></p>
+    </div>
+</body>
+</html>
