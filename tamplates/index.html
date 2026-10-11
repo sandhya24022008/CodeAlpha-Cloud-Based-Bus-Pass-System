@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud-Based Bus Pass System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef3f8;
+            text-align: center;
+            padding: 40px 15px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+        }
+        a {
+            display: inline-block;
+            margin: 10px;
+            padding: 12px 20px;
+            background-color: #1769aa;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cloud-Based Bus Pass System</h1>
+        <p>Apply for your bus pass online easily.</p>
+        <p>Submit your details and view your application status.</p>
+
+        <a href="{{ url_for('apply') }}">Apply for Bus Pass</a>
+        <a href="{{ url_for('passes') }}">View Applications</a>
+    </div>
+</body>
+</html>
